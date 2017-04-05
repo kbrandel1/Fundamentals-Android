@@ -1,7 +1,6 @@
-package week_10;
+package com.kbrandel.week_10;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 

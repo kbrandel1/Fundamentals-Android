@@ -1,4 +1,4 @@
-package week_09;
+package com.kbrandel.week_09;
 
 abstract class Contact {
     protected String name;
