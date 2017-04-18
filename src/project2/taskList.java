@@ -8,24 +8,28 @@ import java.util.List;
 import java.util.Scanner;
 
 public class taskList {
-     static Scanner sc = new Scanner(System.in);
-     static ArrayList<String> tasks = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList<String> tasks = new ArrayList<>();
 
 
 
     public static void main(String[] args) {
-        String input;
+        String input = "";
 
-        System.out.println
-                ("Please choose an option:	\n" +
-                        "(1) Add a task		        \n" +
-                        "(2) Remove a task	        \n" +
-                        "(3) Update a task	        \n" +
-                        "(4) List all tasks	        \n" +
-                        "(5) List all tasks of a certain Priority \n " +
-                        "(0) Exit");
+        try {
+            System.out.println
+                    ("Please choose an option:	\n" +
+                            "(1) Add a task		        \n" +
+                            "(2) Remove a task	        \n" +
+                            "(3) Update a task	        \n" +
+                            "(4) List all tasks	        \n" +
+                            "(5) List all tasks of a certain Priority \n " +
+                            "(0) Exit");
 
-        input = sc.nextLine();
+            input = sc.nextLine();
+        } catch (NumberFormatException ii) {
+            System.out.println(input + " needs to be an integer between 0 and 5" + ii);
+        }
 
         while (Integer.parseInt(input) != 0) {
             switch (input) {
@@ -54,22 +58,24 @@ public class taskList {
                     break;
             }
 
+            try {
+                System.out.println
+                        ("Please choose an option:	\n" +
+                                "(1) Add a task		        \n" +
+                                "(2) Remove a task	        \n" +
+                                "(3) Update a task	        \n" +
+                                "(4) List all tasks	        \n" +
+                                "(5) List all tasks of a certain Priority \n " +
+                                "(0) Exit");
 
-            System.out.println
-                    ("Please choose an option:	\n" +
-                            "(1) Add a task		        \n" +
-                            "(2) Remove a task	        \n" +
-                            "(3) Update a task	        \n" +
-                            "(4) List all tasks	        \n" +
-                            "(5) List all tasks of a certain Priority \n " +
-                            "(0) Exit");
-
-            input = sc.nextLine();
+                input = sc.nextLine();
+            } catch (NumberFormatException eee) {
+                System.out.println(input + " needs to be an integer between 0 and 5");
+            }
         }
+
     }
-
 }
-
 class Individuals extends taskList {
     static String addTask,taskName,setPriority,inputRemove,input;
     static int inputUpdate;
@@ -85,37 +91,38 @@ class Individuals extends taskList {
         System.out.println("Enter a description of the new task.");
         addTask = sc.nextLine();
         tasks.add(addTask);
+        try
+        {
         System.out.println("Enter the task's priority");
         setPriority = sc.nextLine();
         tasks.add(setPriority);
-
+        }
+        catch (NumberFormatException ee)
+        {
+            System.out.println(setPriority + " needs to be an integer");
+        }
 
     }
 
     public static void getRemove() {
 
-        System.out.println("Enter the index of the task to update.");
-        inputRemove = sc.nextLine();
-        tasks.remove(Integer.parseInt(inputRemove));
-
+            System.out.println("Enter the index of the task to update.");
+            inputRemove = sc.nextLine();
+            tasks.remove(Integer.parseInt(inputRemove));
     }
 
     public static void getUpdate() {
-        System.out.println("Enter the index of the task to update.");
-        inputUpdate = sc.nextInt();
-        tasks.remove(inputUpdate);
-        getAdd();
-     /*   System.out.println("Enter the new name.");
-        taskName = sc.nextLine();
-        tasks.add(taskName);
-        System.out.println("Enter the new description of the task.");
-        addTask = sc.nextLine();
-        tasks.add(addTask);
-        System.out.println("Enter the new priority");
-        setPriority = sc.nextLine();
-        tasks.add(setPriority);
-*/
+        try {
+            System.out.println("Enter the index of the task to update.");
+            inputUpdate = sc.nextInt();
+            tasks.remove(inputUpdate);
+            getAdd();
+        }
+        catch  (NumberFormatException ie) {
+            System.out.println(inputUpdate + " needs to be an integer");
+        }
     }
+
 
     public static void getList(List<String> tasks) {
         //String displayList = sc.nextLine();
